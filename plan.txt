@@ -4,7 +4,7 @@ PLAN FOR THE PACMAN
     1.1: game world (tkinter library)
     1.2: food pallets
     1.3: ghosts
-    1.4: pacamnt 
+    1.4: pacman 
     1.5: actions avaialble for pacman,ghosts form given position(states)
 
 
