@@ -1,0 +1,26 @@
+PLAN FOR THE PACMAN
+
+1. create the pacman envoirnment
+    1.1: game world (tkinter library)
+    1.2: food pallets
+    1.3: ghosts
+    1.4: pacamnt 
+    1.5: actions avaialble for pacman,ghosts form given position(states)
+
+
+2. identify states,actions,reward etc from envoirnment
+    2.1 position of pacman, ghosts, food pallets, fruit
+    2.2 valid actions from the current states
+        2.2.1 hit the wall and stay in same cell
+        2.2.2 some stochasticity can be added(some prbability to take other direction than intended)
+        2.2.3 if ghost is is some range try to avoid. vise versa for ghost
+    2.3 going away from ghost and collecting as food pallets will give positive reward etc. 
+
+3. build DQN accodingly to test PACMAN
+    3.1 pytorch for building Deep Q Network for traiing pacman 
+    3.2 ghosts can have some fixed policies
+
+4. Test the results
+
+5. try some extra policies with PACMAN and ghosts
+
