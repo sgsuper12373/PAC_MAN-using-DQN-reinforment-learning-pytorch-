@@ -430,8 +430,28 @@ def readCommand(argv):
         if 'numTraining' not in agentOpts:
             agentOpts['numTraining'] = options.numTraining
 
-    pacman = pacmanType(agentOpts) if isinstance(agentOpts, dict) else pacmanType()
+    # Instantiate the pacman agent. Some agents (like DQN) accept an
+    # options dict while others (like KeyboardAgent) expect an index or no
+    # arguments. Try keyword-argument construction first and fall back to
+    # constructors that accept a single argument or no arguments.
+    try:
+        if isinstance(agentOpts, dict) and agentOpts:
+            pacman = pacmanType(**agentOpts)
+        else:
+            pacman = pacmanType()
+    except TypeError:
+        # Fall back: pass the dict as a single positional argument if the
+        # agent expects it, or construct without args.
+        try:
+            pacman = pacmanType(agentOpts) if isinstance(agentOpts, dict) else pacmanType()
+        except Exception:
+            pacman = pacmanType()
     args['pacmanAgent'] = pacman
+    # Some legacy agents expect an integer index as their first parameter
+    # but may have been constructed with the whole agentOpts dict by
+    # mistake; protect against that by coercing a dict index to 0.
+    if hasattr(pacman, 'index') and isinstance(pacman.index, dict):
+        pacman.index = 0
     pacman.width = agentOpts.get('width', pacman.width if hasattr(pacman, 'width') else None)
     pacman.height = agentOpts.get('height', pacman.height if hasattr(pacman, 'height') else None)
 
