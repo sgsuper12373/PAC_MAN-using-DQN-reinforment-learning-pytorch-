@@ -243,7 +243,7 @@ class PacmanGraphics:
         grid_height = (height - 1) * self.gridSize
         screen_width = 2 * self.gridSize + grid_width
         screen_height = 2 * self.gridSize + grid_height + INFO_PANE_HEIGHT
-        begin_graphics(screen_width, screen_height, BACKGROUND_COLOR, "CS188 Pacman")
+        begin_graphics(screen_width, screen_height, BACKGROUND_COLOR, "EE5531 Pacman")
 
     # -------------------------
     # Pacman drawing & anim
